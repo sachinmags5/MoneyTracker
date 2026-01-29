@@ -1,6 +1,6 @@
 import User from "./user.model.js";
 import bcrypt from "bcrypt";
-import { userValidationSchema } from "./user.validation.js";
+import { userValidationSchema } from "./transaction.validation.js";
 
 export const registerUser = async (data) => {
   try {

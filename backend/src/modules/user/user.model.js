@@ -18,6 +18,10 @@ const UserSchema = new mongoose.Schema(
     mobilenumber: {
       type: Number,
     },
+    role: {
+      type: String,
+      default: "user", // Sets the default value to 'active'
+    },
   },
   {
     timestamps: true,
