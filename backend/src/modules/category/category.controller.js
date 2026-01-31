@@ -1,7 +1,11 @@
 import * as service from "./category.service.js";
 
 export const category = async (req, res) => {
-  const category = await service.category(req.body);
+  // const category = await service.category({ ...req.body, ...req.user }); //extra safety Taking user._id from middleware
+  const category = await service.category({
+    ...req.body,
+    userId: String(req.user._id),
+  });
   res.status(201).json(category);
 };
 
@@ -11,6 +15,7 @@ export const categoryList = async (req, res) => {
     page: Number(page),
     limit: Number(limit),
     search,
+    userId: String(req.user._id),
   });
   res.status(200).json(categoryList);
 };

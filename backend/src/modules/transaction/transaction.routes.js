@@ -1,8 +1,11 @@
 import { Router } from "express";
-import * as UserController from "./user.controller.js";
+import * as TransactionController from "./transaction.controller.js";
 
 const router = Router();
 
-router.post("/", UserController.register);
+router.post("/", TransactionController.addTransaction);
+router.get("/transactions-list", TransactionController.transactionsList);
+router.delete("/:id", TransactionController.deleteTransaction);
+router.put("/:id", TransactionController.updateTransaction);
 
 export default router;

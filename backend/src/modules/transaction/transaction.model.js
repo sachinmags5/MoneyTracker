@@ -1,22 +1,35 @@
 import mongoose from "mongoose";
 
-const UserSchema = new mongoose.Schema(
+const TransactionSchema = new mongoose.Schema(
   {
-    name: {
-      type: String,
-      required: true,
-    },
-    email: {
-      type: String,
-      required: true,
-      unique: true,
-    },
-    password: {
-      type: String,
-      required: true,
-    },
-    mobilenumber: {
+    amount: {
       type: Number,
+      required: true,
+    },
+    type: {
+      type: String,
+      enum: ["income", "expense"],
+      required: true,
+    },
+    categoryId: {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "Category",
+      required: true,
+      index: true,
+    },
+    userId: {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "User",
+      required: true,
+      index: true,
+    },
+    date: {
+      type: Date,
+      default: Date.now,
+      index: true,
+    },
+    note: {
+      type: String,
     },
   },
   {
@@ -24,4 +37,4 @@ const UserSchema = new mongoose.Schema(
   },
 );
 
-export default mongoose.model("User", UserSchema);
+export default mongoose.model("Transaction", TransactionSchema);

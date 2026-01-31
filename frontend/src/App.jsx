@@ -14,6 +14,8 @@ import { MyAccount } from './features/dashboard/MyAccount.jsx';
 import User from './features/user/User.jsx'
 import { checkAuth } from "./features/auth/authApi";
 import { ToastContainer, toast } from 'react-toastify';
+import { CategoryList } from './features/category/CategoryList.jsx';
+import {TransactionList} from "./features/transaction/TransactionList.jsx";
 
 function App() {
   const dispatch = useDispatch();
@@ -42,6 +44,8 @@ function App() {
           <Route path="/dashboard" element={<Dashboard />} />
           <Route path="/profile" element={<Profile />} />
           <Route path="/my-account" element={<MyAccount />} />
+          <Route path="/category" element={<CategoryList />} />
+          <Route path="/transaction" element={<TransactionList />} />
           <Route path="/users" element={<User />} />
         </Route>
         {/* <Route path="*" element={<Dashboard />} /> */}

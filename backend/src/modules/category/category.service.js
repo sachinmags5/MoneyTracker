@@ -3,6 +3,8 @@ import { categoryValidationSchema } from "./category.validation.js";
 
 export const category = async (data) => {
   try {
+    // console.log(data, "ssssssssssss");
+
     const { error, value } = categoryValidationSchema.validate(data);
     if (error) {
       throw new Error(error.details[0].message);
@@ -10,7 +12,9 @@ export const category = async (data) => {
 
     const newCategory = await Category.create({
       ...value,
+      // userId: data.userId, //extra safety Taking user._id passed from middleware
     });
+    // console.log(newCategory, "newCategoryyyyyyyyy");
     return newCategory;
   } catch (error) {
     console.error("Error Creating category:", error.message);
@@ -18,11 +22,15 @@ export const category = async (data) => {
   }
 };
 
-export const categoryList = async ({ page, limit, search }) => {
+export const categoryList = async ({ page, limit, search, userId }) => {
   try {
     const query = search
-      ? { name: { $regex: search, $options: "i" }, status: "active" }
-      : { status: "active" };
+      ? {
+          name: { $regex: search, $options: "i" },
+          status: "active",
+          userId,
+        }
+      : { status: "active", userId };
     const skip = (page - 1) * limit;
 
     const [items, total] = await Promise.all([
