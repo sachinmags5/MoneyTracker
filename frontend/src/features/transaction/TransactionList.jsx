@@ -352,11 +352,11 @@ export function TransactionList() {
 
   return (
     <div>
-      <Box sx={{ display: "flex", justifyContent: "flex-end" }}>
+      <Box sx={{ display: "flex", justifyContent: "center" }}>
         <Button
           variant="contained"
           startIcon={<Add />}
-          sx={{ m: 1 }}
+          sx={{ m: 2 }}
           onClick={handleOpenAdd}
         >
           Add Transaction

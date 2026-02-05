@@ -56,7 +56,7 @@ export default function MyAppNav() {
   const DrawerList = (
       <Box sx={{ width: 250 }} role="presentation" onClick={toggleDrawer(false)}>
         <List>
-          {['Category', 'Transaction'].map((text, index) => (
+          {['Dashboard','Category', 'Transaction'].map((text, index) => (
             <ListItem key={text} disablePadding>
               <ListItemButton>
                 <ListItemIcon>
