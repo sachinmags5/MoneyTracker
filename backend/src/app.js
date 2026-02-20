@@ -7,6 +7,9 @@ import categoryRoutes from "./modules/category/category.routes.js";
 import transactionRoutes from "./modules/transaction/transaction.routes.js";
 import statsRoutes from "./modules/stats/stats.routes.js";
 import { authenticate } from "./middlewares/auth.middleware.js";
+import errorMiddleware from "./middlewares/error.middleware.js";
+import requestLogger from "./middlewares/requestLogger.middleware.js";
+
 const app = express();
 
 // Allow requests from your frontend (http://localhost:5173) app.use(cors({ origin: "http://localhost:5173", // frontend URL methods: ["GET", "POST", "PUT", "DELETE"], credentials: true }));
@@ -29,9 +32,20 @@ app.use(
 );
 app.set("trust proxy", 1);
 
+app.use(requestLogger);
 app.use("/api/users", userRoutes);
 app.use("/api/category", authenticate, categoryRoutes);
 app.use("/api/transaction", authenticate, transactionRoutes);
 app.use("/api/stats", authenticate, statsRoutes);
+
+// 404 handler
+app.use((req, res, next) => {
+  const err = new Error(`Route not found: ${req.originalUrl}`);
+  err.statusCode = 404;
+  next(err);
+});
+
+// CENTRAL ERROR HANDLER (always last)
+app.use(errorMiddleware);
 
 export default app;

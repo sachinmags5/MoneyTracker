@@ -1,4 +1,7 @@
 import * as service from "./user.service.js";
+import asyncHandler from "../../utils/asyncHandler.js";
+import AppError from "../../utils/AppError.js";
+import logger from "../../config/logger.js";
 
 export const register = async (req, res) => {
   const { email, password, name } = req.body; // Basic validation (you can replace with Joi/express-validator for stronger checks)
@@ -9,15 +12,17 @@ export const register = async (req, res) => {
   res.status(201).json(result);
 };
 
-export const login = async (req, res) => {
+export const login = asyncHandler(async (req, res) => {
   try {
     const { email, password } = req.body;
 
     const result = await service.loginUser({ email, password });
-
+    logger.info(`Login attempt: ${req.body.email}`);
     // If loginUser returned an error message inside token
     if (result?.token?.message) {
-      return res.status(401).json({ message: result.token.message });
+      // console.log("errr");
+      throw new AppError(result?.token?.message, 401);
+      // return res.status(401).json({ message: result.token.message });
     }
 
     // Set secure cookie with JWT
@@ -27,22 +32,26 @@ export const login = async (req, res) => {
       sameSite: "strict",
       maxAge: 24 * 60 * 60 * 1000, // 1 day
     });
+    logger.info(`User logged in: ${req.body.email}`);
 
     return res.status(200).json({
       ...result,
       message: "Login successful",
     });
   } catch (error) {
-    return res.status(401).json({ message: error.message || "Login failed" });
+    logger.error("Login error", error);
+    throw new AppError(error.message || "Login failed", 401);
+    // return res.status(401).json({ message: error.message || "Login failed" });
   }
-};
+});
 
 export const getMe = async (req, res) => {
   try {
     const result = await service.getMe(req.user);
     res.status(200).json(result);
   } catch (error) {
-    res.status(500).json({ message: "Server error" });
+    throw new AppError("Server error", 500);
+    // res.status(500).json({ message: "Server error" });
   }
 };
 
