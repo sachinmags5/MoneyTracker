@@ -9,6 +9,8 @@ import statsRoutes from "./modules/stats/stats.routes.js";
 import { authenticate } from "./middlewares/auth.middleware.js";
 import errorMiddleware from "./middlewares/error.middleware.js";
 import requestLogger from "./middlewares/requestLogger.middleware.js";
+import swaggerUi from "swagger-ui-express";
+import swaggerSpec from "./config/swagger.js";
 
 const app = express();
 
@@ -32,7 +34,13 @@ app.use(
 );
 app.set("trust proxy", 1);
 
+// Swagger route
+app.use("/api-docs", swaggerUi.serve, swaggerUi.setup(swaggerSpec));
+
+//winston Logger
 app.use(requestLogger);
+
+//my routes
 app.use("/api/users", userRoutes);
 app.use("/api/category", authenticate, categoryRoutes);
 app.use("/api/transaction", authenticate, transactionRoutes);
