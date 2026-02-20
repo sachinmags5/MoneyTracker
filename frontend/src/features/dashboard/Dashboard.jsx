@@ -123,9 +123,11 @@ export const Dashboard = () => {
                 <Typography variant="h6">Analytics</Typography>
                 <Divider sx={{ my: 1 }} />
                 <Typography color="text.secondary">
-                  Chart / Graph can go here !
+                  Note: Transaction Graph per month !
                 </Typography>
-                
+                {Summary?.totalsByCategory.length == 0  ? <Typography width={900} height={250} color="text.secondary">
+                  No Transactions data found
+                </Typography> :
                 <LineChart width={900} height={250} data={Summary?.totalsByCategory} margin={{ top: 20, right: 20, bottom: 5, left: 0 }}>
                   <Line type="monotone" dataKey="totalAmount" stroke="#8884d8" />
                   <CartesianGrid stroke="#ccc" strokeDasharray="5 5" />
@@ -133,7 +135,7 @@ export const Dashboard = () => {
                   <YAxis />
                   <Tooltip />
                 </LineChart>
-
+                }
               </CardContent>
             </Card>
           </Grid>

@@ -1,6 +1,8 @@
 import * as service from "./stats.service.js";
+import asyncHandler from "../../utils/asyncHandler.js";
+import AppError from "../../utils/AppError.js";
 
-export const getSummary = async (req, res) => {
+export const getSummary = asyncHandler(async (req, res) => {
   try {
     const {
       year = new Date().getFullYear(),
@@ -14,6 +16,7 @@ export const getSummary = async (req, res) => {
     res.status(200).json(result);
   } catch (error) {
     console.log("Server Error", error);
-    res.status(500).json({ message: "Server error" });
+    throw new AppError("Server error", 500);
+    // res.status(500).json({ message: "Server error" });
   }
-};
+});
