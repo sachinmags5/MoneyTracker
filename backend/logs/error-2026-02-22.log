@@ -1,0 +1,11 @@
+2026-02-22 18:02:22 [ERROR]: Error: "message" is not allowed
+    at Module.addTransaction (file:///C:/Users/Dell/Desktop/MoneyTracker/backend/src/modules/transaction/transaction.service.js:9:13)
+    at file:///C:/Users/Dell/Desktop/MoneyTracker/backend/src/modules/transaction/transaction.controller.js:8:39
+    at file:///C:/Users/Dell/Desktop/MoneyTracker/backend/src/utils/asyncHandler.js:3:21
+    at Layer.handleRequest (C:\Users\Dell\Desktop\MoneyTracker\backend\node_modules\router\lib\layer.js:152:17)
+    at next (C:\Users\Dell\Desktop\MoneyTracker\backend\node_modules\router\lib\route.js:157:13)
+    at Route.dispatch (C:\Users\Dell\Desktop\MoneyTracker\backend\node_modules\router\lib\route.js:117:3)
+    at handle (C:\Users\Dell\Desktop\MoneyTracker\backend\node_modules\router\index.js:435:11)
+    at Layer.handleRequest (C:\Users\Dell\Desktop\MoneyTracker\backend\node_modules\router\lib\layer.js:152:17)
+    at C:\Users\Dell\Desktop\MoneyTracker\backend\node_modules\router\index.js:295:15
+    at processParams (C:\Users\Dell\Desktop\MoneyTracker\backend\node_modules\router\index.js:582:12)

@@ -250,7 +250,7 @@
 //   );
 // }
 
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState , useCallback , useMemo} from "react";
 import { useSelector, useDispatch } from "react-redux";
 import {
   IconButton,
@@ -278,10 +278,16 @@ import {
   deleteTransaction
 } from "./transactionApi.js";
 import { fetchCategory } from "../category/categoryApi.js";
+import { TransactionCard } from "./TransactionCard";
 
 export function TransactionList() {
-  const transactions = useSelector((state) => state.transaction);
-  const categories = useSelector((state) => state.category);
+  const transactions = useSelector(
+    (state) => state.transaction?.Transaction?.items
+  );
+
+  const categories = useSelector(
+    (state) => state.category?.Category?.items
+  );
   const dispatch = useDispatch();
 
   const [open, setOpen] = useState(false);
@@ -295,8 +301,21 @@ export function TransactionList() {
     categoryId: ""
   });
 
+  const [error,setError] = useState({
+    amount: "",
+    type: "",
+    note: "",
+    categoryId: ""
+  });
+
   const resetForm = () => {
     setForm({ amount: "", type: "expense", note: "", categoryId: "" });
+    setError({
+      amount: "",
+      type: "",
+      note: "",
+      categoryId: ""
+    });
     setselectedTransaction(null);
     setEditMode(false);
   };
@@ -306,20 +325,20 @@ export function TransactionList() {
     setOpen(true);
   };
 
-  const handleOpenEdit = (transaction) => {
-    setEditMode(true);
-    setselectedTransaction(transaction);
-    setForm({
-      amount: transaction.amount,
-      type: transaction.type,
-      note: transaction.note || "",
-      categoryId: transaction.categoryId || "",
-    });
-    setOpen(true);
-  };
+    const handleOpenEdit = useCallback((transaction) => {
+      setEditMode(true);
+      setselectedTransaction(transaction);
+      setForm({
+        amount: transaction.amount,
+        type: transaction.type,
+        note: transaction.note || "",
+        categoryId: transaction.categoryId || "",
+      });
+      setOpen(true);
+    }, []);
 
   const handleSave = () => {
-    if (!form?.amount?.trim()) return;
+    if (!validateForm()) return;
 
     if (editMode) {
       dispatch(
@@ -336,11 +355,65 @@ export function TransactionList() {
     resetForm();
   };
 
-  const handleDelete = (id) => {
+  const handleDelete = useCallback((id) => {
     if (window.confirm("Are you sure you want to delete this transaction?")) {
-      dispatch(deleteTransaction(id));
+        dispatch(deleteTransaction(id));
+      }
+    }, [dispatch]);
+
+    const validateForm = () => {
+    let newError = {
+      amount: "",
+      type: "",
+      note: "",
+      categoryId: ""
+    };
+
+    let isValid = true;
+
+    // Amount validation
+    if (!form.amount || Number(form.amount) <= 0) {
+      newError.amount = "Amount must be greater than 0";
+      isValid = false;
     }
+
+    // Type validation
+    if (!form.type) {
+      newError.type = "Type is required";
+      isValid = false;
+    }
+
+    // Category validation
+    if (!form.categoryId) {
+      newError.categoryId = "Category is required";
+      isValid = false;
+    }
+
+    // Note validation (optional example)
+    if (form.note.length > 200) {
+      newError.note = "Note cannot exceed 200 characters";
+      isValid = false;
+    }
+
+    setError(newError);
+    return isValid;
   };
+
+  const transactionItems = useMemo(() => {
+    return transactions?.map((txn) => (
+      <TransactionCard
+        key={txn._id}
+        transaction={txn}
+        categories={categories}
+        onEdit={handleOpenEdit}
+        onDelete={handleDelete}
+      />
+    ));
+  }, [
+    transactions,
+    categories,
+    handleDelete
+  ]);
 
   useEffect(() => {
     dispatch(fetchTransaction());
@@ -363,7 +436,7 @@ export function TransactionList() {
         </Button>
       </Box>
        <Box sx={{m:5}} >
-      <Grid container spacing={2} sx={{ mt: 2 }}>
+      {/* <Grid container spacing={2} sx={{ mt: 2 }}>
         {transactions?.Transaction?.items?.length === 0 && (
           <Grid item xs={12}>
             <Typography color="text.secondary" align="center">
@@ -415,6 +488,9 @@ export function TransactionList() {
           </Grid>
         ))}
       
+      </Grid> */}
+      <Grid container spacing={2}>
+        {transactionItems}
       </Grid>
         </Box>
       {/* Add/Edit Modal */}
@@ -430,7 +506,12 @@ export function TransactionList() {
               type="number"
               fullWidth
               value={form.amount}
-              onChange={(e) => setForm({ ...form, amount: e.target.value })}
+              onChange={(e) => {
+                setForm({ ...form, amount: e.target.value });
+                setError({ ...error, amount: "" });
+              }}
+              error={!!error.amount}
+              helperText={error.amount}
               //didnt worked
               // slotProps={{ input: { min: 1, max: 100000, }, }}
               // error={Number(form.amount) <= 0}
@@ -442,7 +523,12 @@ export function TransactionList() {
               label="Type"
               fullWidth
               value={form.type}
-              onChange={(e) => setForm({ ...form, type: e.target.value })}
+              onChange={(e) => {
+                setForm({ ...form, type: e.target.value });
+                setError({ ...error, type: "" });
+              }}
+              error={!!error.type}
+              helperText={error.type}
             >
               <MenuItem value="income">Income</MenuItem>
               <MenuItem value="expense">Expense</MenuItem>
@@ -453,9 +539,14 @@ export function TransactionList() {
               label="Category"
               fullWidth
               value={form.categoryId}
-              onChange={(e) => setForm({ ...form, categoryId: e.target.value })}
+              onChange={(e) => {
+                setForm({ ...form, categoryId: e.target.value });
+                setError({ ...error, categoryId: "" });
+              }}
+              error={!!error.categoryId}
+              helperText={error.categoryId}
             >
-              {categories?.Category?.items?.map((cat) => (
+              {categories?.map((cat) => (
                 <MenuItem key={cat._id} value={cat._id}>
                   {cat.name}
                 </MenuItem>
@@ -468,14 +559,19 @@ export function TransactionList() {
               multiline
               rows={3}
               value={form.note}
-              onChange={(e) => setForm({ ...form, note: e.target.value })}
+              onChange={(e) => {
+                setForm({ ...form, note: e.target.value });
+                setError({ ...error, note: "" });
+              }}
+              error={!!error.note}
+              helperText={error.note}
             />
           </Stack>
         </DialogContent>
 
         <DialogActions>
           <Button onClick={() => setOpen(false)}>Cancel</Button>
-          <Button variant="contained" onClick={handleSave}>
+          <Button variant="contained" onClick={handleSave} disabled={!form.amount || !form.categoryId}>
             {editMode ? "Update" : "Add"}
           </Button>
         </DialogActions>

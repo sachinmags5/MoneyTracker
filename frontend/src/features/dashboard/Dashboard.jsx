@@ -18,7 +18,7 @@ import { fetchSummary } from "./dashboardApi.js";
 import { LineChart, Line, CartesianGrid, XAxis, YAxis ,Tooltip } from 'recharts';
 import MonthFilter from '../../components/common/MonthFilter.jsx';
 
-export const Dashboard = () => {
+const Dashboard = () => {
   const navigate = useNavigate();
   const dispatch =  useDispatch();
   const {Summary} = useSelector((state) => state.summary);
@@ -143,3 +143,6 @@ export const Dashboard = () => {
       </Box>
     );
 };
+
+
+export default Dashboard;

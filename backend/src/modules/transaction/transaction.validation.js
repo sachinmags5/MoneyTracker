@@ -5,5 +5,5 @@ export const transactionValidationSchema = Joi.object({
   type: Joi.string().required(),
   categoryId: Joi.string().required(),
   userId: Joi.string().required(),
-  note: Joi.string().min(3).max(100),
+  note: Joi.string().min(3).max(100).allow("").optional(),
 });

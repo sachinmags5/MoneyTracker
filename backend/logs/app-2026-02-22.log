@@ -1,0 +1,66 @@
+2026-02-22 18:00:58 [INFO]: Server started on port 5000
+2026-02-22 18:01:30 [INFO]: GET /api/users/me - IP: ::1
+2026-02-22 18:01:30 [INFO]: GET /api/users/me - IP: ::1
+2026-02-22 18:01:33 [INFO]: GET /api/users/me - IP: ::1
+2026-02-22 18:01:33 [INFO]: GET /api/users/me - IP: ::1
+2026-02-22 18:01:43 [INFO]: POST /api/users/login - IP: ::1
+2026-02-22 18:01:43 [INFO]: Login attempt: appu@gmail.com
+2026-02-22 18:01:43 [INFO]: User logged in: appu@gmail.com
+2026-02-22 18:01:44 [INFO]: GET /api/stats/summary?year=2026&month=2 - IP: ::1
+2026-02-22 18:01:44 [INFO]: GET /api/stats/summary?year=2026&month=2 - IP: ::1
+2026-02-22 18:01:51 [INFO]: GET /api/transaction/transactions-list - IP: ::1
+2026-02-22 18:01:51 [INFO]: GET /api/category/category-list - IP: ::1
+2026-02-22 18:01:51 [INFO]: GET /api/transaction/transactions-list - IP: ::1
+2026-02-22 18:01:51 [INFO]: GET /api/category/category-list - IP: ::1
+2026-02-22 18:02:22 [INFO]: POST /api/transaction - IP: ::1
+2026-02-22 18:02:22 [ERROR]: Error: "message" is not allowed
+    at Module.addTransaction (file:///C:/Users/Dell/Desktop/MoneyTracker/backend/src/modules/transaction/transaction.service.js:9:13)
+    at file:///C:/Users/Dell/Desktop/MoneyTracker/backend/src/modules/transaction/transaction.controller.js:8:39
+    at file:///C:/Users/Dell/Desktop/MoneyTracker/backend/src/utils/asyncHandler.js:3:21
+    at Layer.handleRequest (C:\Users\Dell\Desktop\MoneyTracker\backend\node_modules\router\lib\layer.js:152:17)
+    at next (C:\Users\Dell\Desktop\MoneyTracker\backend\node_modules\router\lib\route.js:157:13)
+    at Route.dispatch (C:\Users\Dell\Desktop\MoneyTracker\backend\node_modules\router\lib\route.js:117:3)
+    at handle (C:\Users\Dell\Desktop\MoneyTracker\backend\node_modules\router\index.js:435:11)
+    at Layer.handleRequest (C:\Users\Dell\Desktop\MoneyTracker\backend\node_modules\router\lib\layer.js:152:17)
+    at C:\Users\Dell\Desktop\MoneyTracker\backend\node_modules\router\index.js:295:15
+    at processParams (C:\Users\Dell\Desktop\MoneyTracker\backend\node_modules\router\index.js:582:12)
+2026-02-22 18:03:16 [INFO]: Server started on port 5000
+2026-02-22 18:05:44 [INFO]: POST /api/transaction - IP: ::1
+2026-02-22 18:06:22 [INFO]: Server started on port 5000
+2026-02-22 18:06:32 [INFO]: POST /api/transaction - IP: ::1
+2026-02-22 18:06:48 [INFO]: GET /api/users/me - IP: ::1
+2026-02-22 18:06:49 [INFO]: GET /api/users/me - IP: ::1
+2026-02-22 18:06:50 [INFO]: GET /api/stats/summary?year=2026&month=2 - IP: ::1
+2026-02-22 18:06:50 [INFO]: GET /api/stats/summary?year=2026&month=2 - IP: ::1
+2026-02-22 18:06:55 [INFO]: GET /api/transaction/transactions-list - IP: ::1
+2026-02-22 18:06:55 [INFO]: GET /api/category/category-list - IP: ::1
+2026-02-22 18:06:55 [INFO]: GET /api/transaction/transactions-list - IP: ::1
+2026-02-22 18:06:55 [INFO]: GET /api/category/category-list - IP: ::1
+2026-02-22 19:54:51 [INFO]: GET /api/users/me - IP: ::1
+2026-02-22 19:54:51 [INFO]: GET /api/users/me - IP: ::1
+2026-02-22 19:54:52 [INFO]: GET /api/stats/summary?year=2026&month=2 - IP: ::1
+2026-02-22 19:54:52 [INFO]: GET /api/stats/summary?year=2026&month=2 - IP: ::1
+2026-02-22 19:55:11 [INFO]: GET /api/transaction/transactions-list - IP: ::1
+2026-02-22 19:55:11 [INFO]: GET /api/category/category-list - IP: ::1
+2026-02-22 19:55:12 [INFO]: GET /api/transaction/transactions-list - IP: ::1
+2026-02-22 19:55:12 [INFO]: GET /api/category/category-list - IP: ::1
+2026-02-22 19:55:44 [INFO]: GET /api/category/category-list - IP: ::1
+2026-02-22 19:55:44 [INFO]: GET /api/category/category-list - IP: ::1
+2026-02-22 19:56:24 [INFO]: GET /api/transaction/transactions-list - IP: ::1
+2026-02-22 19:56:24 [INFO]: GET /api/category/category-list - IP: ::1
+2026-02-22 19:56:24 [INFO]: GET /api/transaction/transactions-list - IP: ::1
+2026-02-22 19:56:24 [INFO]: GET /api/category/category-list - IP: ::1
+2026-02-22 20:00:07 [INFO]: GET /api/transaction/transactions-list - IP: ::1
+2026-02-22 20:00:07 [INFO]: GET /api/category/category-list - IP: ::1
+2026-02-22 20:00:07 [INFO]: GET /api/transaction/transactions-list - IP: ::1
+2026-02-22 20:00:07 [INFO]: GET /api/category/category-list - IP: ::1
+2026-02-22 20:19:08 [INFO]: GET /api/transaction/transactions-list - IP: ::1
+2026-02-22 20:19:08 [INFO]: GET /api/category/category-list - IP: ::1
+2026-02-22 23:33:50 [INFO]: GET /api/users/me - IP: ::1
+2026-02-22 23:33:50 [INFO]: GET /api/users/me - IP: ::1
+2026-02-22 23:33:50 [INFO]: GET /api/stats/summary?year=2026&month=2 - IP: ::1
+2026-02-22 23:33:50 [INFO]: GET /api/stats/summary?year=2026&month=2 - IP: ::1
+2026-02-22 23:37:40 [INFO]: GET /api/category/category-list - IP: ::1
+2026-02-22 23:37:40 [INFO]: GET /api/transaction/transactions-list - IP: ::1
+2026-02-22 23:37:40 [INFO]: GET /api/category/category-list - IP: ::1
+2026-02-22 23:37:40 [INFO]: GET /api/transaction/transactions-list - IP: ::1

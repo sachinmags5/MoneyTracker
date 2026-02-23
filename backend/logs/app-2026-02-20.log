@@ -61,3 +61,35 @@
 2026-02-20 15:35:56 [INFO]: POST /api/users/login - IP: ::1
 2026-02-20 15:35:56 [INFO]: Login attempt: appu1@gmail.com
 2026-02-20 15:35:56 [INFO]: User logged in: appu1@gmail.com
+2026-02-20 15:47:30 [INFO]: GET /api/users/me - IP: ::1
+2026-02-20 15:47:30 [INFO]: GET /api/users/me - IP: ::1
+2026-02-20 17:09:44 [INFO]: GET /api/users/me - IP: ::1
+2026-02-20 17:09:44 [INFO]: GET /api/users/me - IP: ::1
+2026-02-20 17:09:57 [INFO]: POST /api/users/login - IP: ::1
+2026-02-20 17:09:57 [INFO]: Login attempt: appu@gmail.com
+2026-02-20 17:09:57 [INFO]: User logged in: appu@gmail.com
+2026-02-20 17:09:58 [INFO]: GET /api/stats/summary?year=2026&month=2 - IP: ::1
+2026-02-20 17:09:58 [INFO]: GET /api/stats/summary?year=2026&month=2 - IP: ::1
+2026-02-20 17:34:25 [INFO]: GET /api/stats/summary?month=2&year=2026 - IP: ::1
+2026-02-20 19:32:24 [INFO]: GET /api/users/me - IP: ::1
+2026-02-20 19:32:24 [INFO]: GET /api/users/me - IP: ::1
+2026-02-20 19:32:24 [INFO]: GET /api/stats/summary?year=2026&month=2 - IP: ::1
+2026-02-20 19:32:24 [INFO]: GET /api/stats/summary?year=2026&month=2 - IP: ::1
+2026-02-20 19:35:33 [INFO]: GET /api/category/category-list - IP: ::1
+2026-02-20 19:35:33 [INFO]: GET /api/category/category-list - IP: ::1
+2026-02-20 19:36:37 [INFO]: PUT /api/category/6984738d24ebfc0ddf0569ca - IP: ::1
+2026-02-20 19:39:32 [INFO]: GET /api/transaction/transactions-list - IP: ::1
+2026-02-20 19:39:32 [INFO]: GET /api/category/category-list - IP: ::1
+2026-02-20 19:39:33 [INFO]: GET /api/transaction/transactions-list - IP: ::1
+2026-02-20 19:39:33 [INFO]: GET /api/category/category-list - IP: ::1
+2026-02-20 19:39:58 [INFO]: POST /api/transaction - IP: ::1
+2026-02-20 19:41:58 [INFO]: GET /api/users/me - IP: ::1
+2026-02-20 19:41:58 [INFO]: GET /api/users/me - IP: ::1
+2026-02-20 19:41:59 [INFO]: GET /api/stats/summary?year=2026&month=2 - IP: ::1
+2026-02-20 19:41:59 [INFO]: GET /api/stats/summary?year=2026&month=2 - IP: ::1
+2026-02-20 19:42:03 [INFO]: GET /api/transaction/transactions-list - IP: ::1
+2026-02-20 19:42:03 [INFO]: GET /api/category/category-list - IP: ::1
+2026-02-20 19:42:03 [INFO]: GET /api/category/category-list - IP: ::1
+2026-02-20 19:42:03 [INFO]: GET /api/transaction/transactions-list - IP: ::1
+2026-02-20 19:42:21 [INFO]: POST /api/transaction - IP: ::1
+2026-02-20 19:47:11 [INFO]: Server started on port 5000

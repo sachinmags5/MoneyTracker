@@ -1,12 +1,20 @@
 import * as service from "./transaction.service.js";
+import asyncHandler from "../../utils/asyncHandler.js";
+import AppError from "../../utils/AppError.js";
+import logger from "../../config/logger.js";
 
-export const addTransaction = async (req, res) => {
-  const transaction = await service.addTransaction({
-    ...req.body,
-    userId: String(req.user._id),
-  });
-  res.status(201).json(transaction);
-};
+export const addTransaction = asyncHandler(async (req, res) => {
+  try {
+    const transaction = await service.addTransaction({
+      ...req.body,
+      userId: String(req.user._id),
+    });
+    res.status(201).json(transaction);
+  } catch (error) {
+    logger.error("Transaction error", error);
+    throw new AppError(error.message || "Transaction Error", 401);
+  }
+});
 
 export const transactionsList = async (req, res) => {
   const {
