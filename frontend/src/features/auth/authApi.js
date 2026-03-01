@@ -1,15 +1,12 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
-import axios from "axios";
+import api from "../../app/axiosInstance";
 
+// REGISTER
 export const registerUser = createAsyncThunk(
   "auth/register",
   async (formData, { rejectWithValue }) => {
     try {
-      const res = await axios.post(
-        `${import.meta.env.VITE_API_URL}users/register`,
-        formData,
-        { withCredentials: true },
-      );
+      const res = await api.post("users/register", formData);
       return res.data;
     } catch (err) {
       return rejectWithValue(err.response?.data?.message);
@@ -17,15 +14,18 @@ export const registerUser = createAsyncThunk(
   },
 );
 
+// LOGIN
 export const loginUser = createAsyncThunk(
   "auth/login",
-  async (credentials, { rejectWithValue }) => {
+  async (credentials, { dispatch, rejectWithValue }) => {
     try {
-      const res = await axios.post(
-        `${import.meta.env.VITE_API_URL}users/login`,
-        credentials,
-        { withCredentials: true },
-      );
+      const res = await api.post("users/login", credentials, {
+        withCredentials: true,
+      });
+      console.log("LOGIN RESPONSE:", res.data.access_token);
+      // Save access token in redux
+      // dispatch(setAccessToken(res.data.access_token));
+
       return res.data;
     } catch (err) {
       return rejectWithValue(err.response?.data?.message);
@@ -33,31 +33,25 @@ export const loginUser = createAsyncThunk(
   },
 );
 
+// CHECK AUTH
 export const checkAuth = createAsyncThunk(
   "auth/checkAuth",
   async (_, { rejectWithValue }) => {
     try {
-      const res = await axios.get(`${import.meta.env.VITE_API_URL}users/me`, {
-        withCredentials: true,
-      });
-
-      // console.log(res.data, "data in api");
+      const res = await api.get("users/me");
       return res.data;
-    } catch (err) {
+    } catch {
       return rejectWithValue("Not authenticated");
     }
   },
 );
 
+// LOGOUT
 export const logoutUser = createAsyncThunk(
   "auth/logout",
-  async (_, { rejectWithValue }) => {
+  async (_, { dispatch, rejectWithValue }) => {
     try {
-      await axios.post(
-        `${import.meta.env.VITE_API_URL}users/logout`,
-        {},
-        { withCredentials: true },
-      );
+      await api.post("users/logout");
       return true;
     } catch {
       return rejectWithValue("Logout failed");

@@ -7,7 +7,7 @@ export const addTransaction = asyncHandler(async (req, res) => {
   try {
     const transaction = await service.addTransaction({
       ...req.body,
-      userId: String(req.user._id),
+      userId: String(req.user.id),
     });
     res.status(201).json(transaction);
   } catch (error) {
@@ -27,7 +27,7 @@ export const transactionsList = async (req, res) => {
   } = req.query;
   // Build filters
   const filters = {
-    userId: String(req.user._id),
+    userId: String(req.user.id),
   };
   if (categoryId) {
     filters.categoryId = categoryId;

@@ -4,7 +4,11 @@ import {
   userValidationSchema,
   loginValidationSchema,
 } from "./user.validation.js";
-import { signToken } from "../../utils/jwt.js";
+import {
+  refreshToken1,
+  signToken,
+  verifyRefreshToken,
+} from "../../utils/jwt.js";
 
 export const registerUser = async (data) => {
   try {
@@ -26,44 +30,98 @@ export const registerUser = async (data) => {
 };
 
 export const loginUser = async (data) => {
-  try {
-    const { error, value } = loginValidationSchema.validate(data);
-    if (error) {
-      console.error("Validation Error:", error.details[0].message);
-      throw new Error(error.details[0].message);
-    }
-    const userData = await User.findOne({ email: value.email });
-    if (userData) {
-      const match = await bcrypt.compare(value.password, userData.password);
-      if (!match) {
-        throw new Error("Invalid credentials");
-      }
-      let userDataObj = userData.toObject();
-      delete userDataObj.password;
-      const token = signToken(userDataObj);
-      console.log(token, "token");
-      console.log(userDataObj, "userDataObj");
-      return { ...userDataObj, token };
-    } else {
-      return {
-        message: "Invalid User email.",
-      };
-    }
-  } catch (error) {
-    console.error("Error Logging user:", error.message);
-    throw error;
+  const { error, value } = loginValidationSchema.validate(data);
+  if (error) {
+    throw new Error(error.details[0].message);
   }
+
+  const user = await User.findOne({ email: value.email });
+  if (!user) {
+    throw new Error("Invalid credentials");
+  }
+
+  const match = await bcrypt.compare(value.password, user.password);
+  if (!match) {
+    throw new Error("Invalid credentials");
+  }
+
+  // ✅ Minimal payload
+  const payload = {
+    id: user._id,
+    name: user.name,
+    role: user.role,
+  };
+
+  const access_token = signToken(payload);
+  const refreshToken = refreshToken1({ id: user._id });
+
+  // ✅ Save refresh token in DB
+  user.refreshToken = refreshToken;
+  await user.save();
+
+  return {
+    user: payload,
+    access_token,
+    refreshToken, // controller sets this in cookie only
+  };
 };
 
-export const getMe = async (data) => {
-  try {
-    const user = await User.findById(data._id).select("-password");
-    if (!user) {
-      return { message: "User not found" };
-    }
-    return user;
-  } catch (error) {
-    console.error("Cannot find user:", data._id, error.message);
-    throw error;
+export const refreshToken = async ({ refreshToken }) => {
+  if (!refreshToken) {
+    throw new Error("Refresh token missing");
   }
+
+  const user = await User.findOne({ refreshToken });
+  if (!user) {
+    throw new Error("Invalid refresh token");
+  }
+
+  // ✅ Verify refresh token
+  const decoded = verifyRefreshToken(refreshToken);
+
+  if (!decoded || decoded.id !== String(user._id)) {
+    throw new Error("Invalid refresh token");
+  }
+
+  // ✅ Minimal payload
+  const payload = {
+    id: user._id,
+    name: user.name,
+    role: user.role,
+  };
+
+  const newAccessToken = signToken(payload);
+  const newRefreshToken = refreshToken1({ id: user._id });
+
+  // ✅ Rotate refresh token
+  user.refreshToken = newRefreshToken;
+  await user.save();
+
+  return {
+    token: newAccessToken,
+    newRefreshToken,
+  };
+};
+
+export const getMe = async ({ id }) => {
+  const user = await User.findById(id).select("-password -refreshToken");
+
+  if (!user) {
+    throw new Error("User not found");
+  }
+
+  return user;
+};
+
+export const logout = async ({ refreshToken }) => {
+  if (!refreshToken) return null;
+
+  const user = await User.findOne({ refreshToken });
+
+  if (user) {
+    user.refreshToken = null;
+    await user.save();
+  }
+
+  return true;
 };

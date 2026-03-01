@@ -1,11 +1,11 @@
-import axios from "axios";
+import api from "../../app/axiosInstance";
 import { createAsyncThunk } from "@reduxjs/toolkit";
 
 export const fetchTransaction = createAsyncThunk(
   "transaction/fetchTransaction",
   async (_, { rejectWithValue }) => {
     try {
-      const res = await axios.get(
+      const res = await api.get(
         `${import.meta.env.VITE_API_URL}transaction/transactions-list`,
         { withCredentials: true },
       );
@@ -20,7 +20,7 @@ export const createTransaction = createAsyncThunk(
   "transaction/createTransaction",
   async (formData, { rejectWithValue }) => {
     try {
-      const res = await axios.post(
+      const res = await api.post(
         `${import.meta.env.VITE_API_URL}transaction`,
         formData,
         {
@@ -38,7 +38,7 @@ export const editTransaction = createAsyncThunk(
   "transaction/editTransaction",
   async ({ id, payload }, { rejectWithValue }) => {
     try {
-      const res = await axios.put(
+      const res = await api.put(
         `${import.meta.env.VITE_API_URL}transaction/${id}`,
         payload,
         {
@@ -56,7 +56,7 @@ export const deleteTransaction = createAsyncThunk(
   "transaction/deleteTransaction",
   async (id, { rejectWithValue }) => {
     try {
-      const res = await axios.delete(
+      const res = await api.delete(
         `${import.meta.env.VITE_API_URL}transaction/${id}`,
         {
           withCredentials: true,

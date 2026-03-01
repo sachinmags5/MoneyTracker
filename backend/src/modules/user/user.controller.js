@@ -13,36 +13,70 @@ export const register = async (req, res) => {
 };
 
 export const login = asyncHandler(async (req, res) => {
-  try {
-    const { email, password } = req.body;
+  const { email, password } = req.body;
 
-    const result = await service.loginUser({ email, password });
-    logger.info(`Login attempt: ${req.body.email}`);
-    // If loginUser returned an error message inside token
-    if (result?.token?.message) {
-      // console.log("errr");
-      throw new AppError(result?.token?.message, 401);
-      // return res.status(401).json({ message: result.token.message });
-    }
+  const result = await service.loginUser({ email, password });
 
-    // Set secure cookie with JWT
-    res.cookie("access_token", result.token, {
-      httpOnly: true,
-      secure: process.env.NODE_ENV === "production",
-      sameSite: "strict",
-      maxAge: 24 * 60 * 60 * 1000, // 1 day
-    });
-    logger.info(`User logged in: ${req.body.email}`);
+  logger.info(`Login attempt: ${email}`);
 
-    return res.status(200).json({
-      ...result,
-      message: "Login successful",
-    });
-  } catch (error) {
-    logger.error("Login error", error);
-    throw new AppError(error.message || "Login failed", 401);
-    // return res.status(401).json({ message: error.message || "Login failed" });
+  if (result?.token?.message) {
+    throw new AppError(result.token.message, 401);
   }
+
+  // ✅ Set ONLY refresh token as httpOnly cookie
+  res.cookie("refreshToken", result.refreshToken, {
+    httpOnly: true,
+    secure: process.env.NODE_ENV === "production",
+    sameSite: "strict",
+    maxAge: 24 * 60 * 60 * 1000, // 1 day
+  });
+
+  logger.info(`User logged in: ${email}`);
+
+  // ✅ Return access token in JSON (NOT cookie)
+  return res.status(200).json({
+    user: {
+      id: result.user.id,
+      name: result.user.name,
+      role: result.user.role,
+    },
+    access_token: result.access_token,
+    message: "Login successful",
+  });
+});
+
+export const refreshToken = asyncHandler(async (req, res) => {
+  const incomingRefreshToken = req.cookies?.refreshToken;
+
+  if (!incomingRefreshToken) {
+    return res.status(401).json({ message: "Refresh token missing" });
+  }
+
+  const result = await service.refreshToken({
+    refreshToken: incomingRefreshToken,
+  });
+
+  if (!result) {
+    return res.status(403).json({ message: "Invalid refresh token" });
+  }
+
+  if (result?.token?.message) {
+    throw new AppError(result.token.message, 401);
+  }
+
+  // ✅ Rotate refresh token (security best practice)
+  res.cookie("refreshToken", result.newRefreshToken, {
+    httpOnly: true,
+    secure: process.env.NODE_ENV === "production",
+    sameSite: "strict",
+    maxAge: 24 * 60 * 60 * 1000, // 1 day
+  });
+
+  // ✅ Return ONLY new access token
+  return res.status(200).json({
+    access_token: result.token,
+    message: "Token refreshed successfully",
+  });
 });
 
 export const getMe = async (req, res) => {
@@ -56,12 +90,8 @@ export const getMe = async (req, res) => {
 };
 
 export const logout = async (req, res) => {
-  res.cookie("access_token", "", {
-    httpOnly: true,
-    expires: new Date(0), // immediately expire
-    sameSite: "strict",
-    secure: process.env.NODE_ENV === "production",
-  });
+  const result = await service.logout({ refreshToken });
 
-  res.status(200).json({ message: "Logged out successfully" });
+  res.clearCookie("refreshToken");
+  res.status(200).json({ ...result, message: "Logged out successfully" });
 };

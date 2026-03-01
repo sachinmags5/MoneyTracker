@@ -1,0 +1,116 @@
+2026-02-27 07:57:27 [ERROR]: Error: "password" length must be at least 6 characters long
+    at Module.loginUser (file:///C:/Users/Dell/Desktop/MoneyTracker/backend/src/modules/user/user.service.js:33:13)
+    at file:///C:/Users/Dell/Desktop/MoneyTracker/backend/src/modules/user/user.controller.js:19:34
+    at file:///C:/Users/Dell/Desktop/MoneyTracker/backend/src/utils/asyncHandler.js:3:21
+    at Layer.handleRequest (C:\Users\Dell\Desktop\MoneyTracker\backend\node_modules\router\lib\layer.js:152:17)
+    at next (C:\Users\Dell\Desktop\MoneyTracker\backend\node_modules\router\lib\route.js:157:13)
+    at Route.dispatch (C:\Users\Dell\Desktop\MoneyTracker\backend\node_modules\router\lib\route.js:117:3)
+    at handle (C:\Users\Dell\Desktop\MoneyTracker\backend\node_modules\router\index.js:435:11)
+    at Layer.handleRequest (C:\Users\Dell\Desktop\MoneyTracker\backend\node_modules\router\lib\layer.js:152:17)
+    at C:\Users\Dell\Desktop\MoneyTracker\backend\node_modules\router\index.js:295:15
+    at processParams (C:\Users\Dell\Desktop\MoneyTracker\backend\node_modules\router\index.js:582:12)
+2026-02-27 12:36:15 [ERROR]: ReferenceError: Cannot access 'refreshToken' before initialization
+    at Module.loginUser (file:///C:/Users/Dell/Desktop/MoneyTracker/backend/src/modules/user/user.service.js:44:28)
+    at async file:///C:/Users/Dell/Desktop/MoneyTracker/backend/src/modules/user/user.controller.js:19:20
+2026-02-27 12:38:53 [ERROR]: ReferenceError: Cannot access 'refreshToken' before initialization
+    at Module.loginUser (file:///C:/Users/Dell/Desktop/MoneyTracker/backend/src/modules/user/user.service.js:44:28)
+    at async file:///C:/Users/Dell/Desktop/MoneyTracker/backend/src/modules/user/user.controller.js:19:20
+2026-02-27 13:14:31 [ERROR]: TypeError: User.save is not a function
+    at Module.loginUser (file:///C:/Users/Dell/Desktop/MoneyTracker/backend/src/modules/user/user.service.js:51:18)
+    at async file:///C:/Users/Dell/Desktop/MoneyTracker/backend/src/modules/user/user.controller.js:19:20
+2026-02-27 14:26:33 [ERROR]: TypeError: Cannot read properties of undefined (reading 'email')
+    at file:///C:/Users/Dell/Desktop/MoneyTracker/backend/src/modules/user/user.controller.js:66:44
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+2026-02-27 14:50:51 [ERROR]: ReferenceError: jwt is not defined
+    at Module.refreshToken (file:///C:/Users/Dell/Desktop/MoneyTracker/backend/src/modules/user/user.service.js:71:5)
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async file:///C:/Users/Dell/Desktop/MoneyTracker/backend/src/modules/user/user.controller.js:63:20
+2026-02-27 14:58:45 [ERROR]: TokenExpiredError: jwt expired
+    at C:\Users\Dell\Desktop\MoneyTracker\backend\node_modules\jsonwebtoken\verify.js:190:21
+    at getSecret (C:\Users\Dell\Desktop\MoneyTracker\backend\node_modules\jsonwebtoken\verify.js:97:14)
+    at module.exports [as verify] (C:\Users\Dell\Desktop\MoneyTracker\backend\node_modules\jsonwebtoken\verify.js:101:10)
+    at verifyRefreshToken (file:///C:/Users/Dell/Desktop/MoneyTracker/backend/src/utils/jwt.js:26:14)
+    at Module.refreshToken (file:///C:/Users/Dell/Desktop/MoneyTracker/backend/src/modules/user/user.service.js:75:21)
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async file:///C:/Users/Dell/Desktop/MoneyTracker/backend/src/modules/user/user.controller.js:63:20
+2026-02-27 15:35:31 [ERROR]: JsonWebTokenError: invalid signature
+    at C:\Users\Dell\Desktop\MoneyTracker\backend\node_modules\jsonwebtoken\verify.js:171:19
+    at getSecret (C:\Users\Dell\Desktop\MoneyTracker\backend\node_modules\jsonwebtoken\verify.js:97:14)
+    at module.exports [as verify] (C:\Users\Dell\Desktop\MoneyTracker\backend\node_modules\jsonwebtoken\verify.js:101:10)
+    at verifyRefreshToken (file:///C:/Users/Dell/Desktop/MoneyTracker/backend/src/utils/jwt.js:27:14)
+    at Module.refreshToken (file:///C:/Users/Dell/Desktop/MoneyTracker/backend/src/modules/user/user.service.js:75:21)
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async file:///C:/Users/Dell/Desktop/MoneyTracker/backend/src/modules/user/user.controller.js:63:20
+2026-02-27 15:38:59 [ERROR]: JsonWebTokenError: invalid signature
+    at C:\Users\Dell\Desktop\MoneyTracker\backend\node_modules\jsonwebtoken\verify.js:171:19
+    at getSecret (C:\Users\Dell\Desktop\MoneyTracker\backend\node_modules\jsonwebtoken\verify.js:97:14)
+    at module.exports [as verify] (C:\Users\Dell\Desktop\MoneyTracker\backend\node_modules\jsonwebtoken\verify.js:101:10)
+    at verifyRefreshToken (file:///C:/Users/Dell/Desktop/MoneyTracker/backend/src/utils/jwt.js:27:14)
+    at Module.refreshToken (file:///C:/Users/Dell/Desktop/MoneyTracker/backend/src/modules/user/user.service.js:75:21)
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async file:///C:/Users/Dell/Desktop/MoneyTracker/backend/src/modules/user/user.controller.js:63:20
+2026-02-27 16:10:23 [ERROR]: JsonWebTokenError: invalid signature
+    at C:\Users\Dell\Desktop\MoneyTracker\backend\node_modules\jsonwebtoken\verify.js:171:19
+    at getSecret (C:\Users\Dell\Desktop\MoneyTracker\backend\node_modules\jsonwebtoken\verify.js:97:14)
+    at module.exports [as verify] (C:\Users\Dell\Desktop\MoneyTracker\backend\node_modules\jsonwebtoken\verify.js:101:10)
+    at verifyRefreshToken (file:///C:/Users/Dell/Desktop/MoneyTracker/backend/src/utils/jwt.js:27:14)
+    at Module.refreshToken (file:///C:/Users/Dell/Desktop/MoneyTracker/backend/src/modules/user/user.service.js:75:21)
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async file:///C:/Users/Dell/Desktop/MoneyTracker/backend/src/modules/user/user.controller.js:63:20
+2026-02-27 16:12:38 [ERROR]: JsonWebTokenError: invalid signature
+    at C:\Users\Dell\Desktop\MoneyTracker\backend\node_modules\jsonwebtoken\verify.js:171:19
+    at getSecret (C:\Users\Dell\Desktop\MoneyTracker\backend\node_modules\jsonwebtoken\verify.js:97:14)
+    at module.exports [as verify] (C:\Users\Dell\Desktop\MoneyTracker\backend\node_modules\jsonwebtoken\verify.js:101:10)
+    at verifyRefreshToken (file:///C:/Users/Dell/Desktop/MoneyTracker/backend/src/utils/jwt.js:27:14)
+    at Module.refreshToken (file:///C:/Users/Dell/Desktop/MoneyTracker/backend/src/modules/user/user.service.js:75:21)
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async file:///C:/Users/Dell/Desktop/MoneyTracker/backend/src/modules/user/user.controller.js:64:20
+2026-02-27 16:16:35 [ERROR]: JsonWebTokenError: invalid signature
+    at C:\Users\Dell\Desktop\MoneyTracker\backend\node_modules\jsonwebtoken\verify.js:171:19
+    at getSecret (C:\Users\Dell\Desktop\MoneyTracker\backend\node_modules\jsonwebtoken\verify.js:97:14)
+    at module.exports [as verify] (C:\Users\Dell\Desktop\MoneyTracker\backend\node_modules\jsonwebtoken\verify.js:101:10)
+    at verifyRefreshToken (file:///C:/Users/Dell/Desktop/MoneyTracker/backend/src/utils/jwt.js:27:14)
+    at Module.refreshToken (file:///C:/Users/Dell/Desktop/MoneyTracker/backend/src/modules/user/user.service.js:75:21)
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async file:///C:/Users/Dell/Desktop/MoneyTracker/backend/src/modules/user/user.controller.js:64:20
+2026-02-27 17:10:29 [ERROR]: TokenExpiredError: jwt expired
+    at C:\Users\Dell\Desktop\MoneyTracker\backend\node_modules\jsonwebtoken\verify.js:190:21
+    at getSecret (C:\Users\Dell\Desktop\MoneyTracker\backend\node_modules\jsonwebtoken\verify.js:97:14)
+    at module.exports [as verify] (C:\Users\Dell\Desktop\MoneyTracker\backend\node_modules\jsonwebtoken\verify.js:101:10)
+    at verifyRefreshToken (file:///C:/Users/Dell/Desktop/MoneyTracker/backend/src/utils/jwt.js:27:14)
+    at Module.refreshToken (file:///C:/Users/Dell/Desktop/MoneyTracker/backend/src/modules/user/user.service.js:75:21)
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async file:///C:/Users/Dell/Desktop/MoneyTracker/backend/src/modules/user/user.controller.js:64:20
+2026-02-27 19:17:34 [ERROR]: Error: Invalid credentials
+    at Module.loginUser (file:///C:/Users/Dell/Desktop/MoneyTracker/backend/src/modules/user/user.service.js:43:15)
+    at async file:///C:/Users/Dell/Desktop/MoneyTracker/backend/src/modules/user/user.controller.js:19:20
+2026-02-27 23:29:14 [ERROR]: ReferenceError: res is not defined
+    at Module.refreshToken (file:///C:/Users/Dell/Desktop/MoneyTracker/backend/src/modules/user/user.service.js:73:16)
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async file:///C:/Users/Dell/Desktop/MoneyTracker/backend/src/modules/user/user.controller.js:64:20
+2026-02-27 23:29:14 [ERROR]: ReferenceError: res is not defined
+    at Module.refreshToken (file:///C:/Users/Dell/Desktop/MoneyTracker/backend/src/modules/user/user.service.js:73:16)
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async file:///C:/Users/Dell/Desktop/MoneyTracker/backend/src/modules/user/user.controller.js:64:20
+2026-02-27 23:36:37 [ERROR]: Error: "email" is required
+    at Module.loginUser (file:///C:/Users/Dell/Desktop/MoneyTracker/backend/src/modules/user/user.service.js:37:13)
+    at file:///C:/Users/Dell/Desktop/MoneyTracker/backend/src/modules/user/user.controller.js:19:34
+    at file:///C:/Users/Dell/Desktop/MoneyTracker/backend/src/utils/asyncHandler.js:3:21
+    at Layer.handleRequest (C:\Users\Dell\Desktop\MoneyTracker\backend\node_modules\router\lib\layer.js:152:17)
+    at next (C:\Users\Dell\Desktop\MoneyTracker\backend\node_modules\router\lib\route.js:157:13)
+    at Route.dispatch (C:\Users\Dell\Desktop\MoneyTracker\backend\node_modules\router\lib\route.js:117:3)
+    at handle (C:\Users\Dell\Desktop\MoneyTracker\backend\node_modules\router\index.js:435:11)
+    at Layer.handleRequest (C:\Users\Dell\Desktop\MoneyTracker\backend\node_modules\router\lib\layer.js:152:17)
+    at C:\Users\Dell\Desktop\MoneyTracker\backend\node_modules\router\index.js:295:15
+    at processParams (C:\Users\Dell\Desktop\MoneyTracker\backend\node_modules\router\index.js:582:12)
+2026-02-27 23:37:08 [ERROR]: Error: "email" is required
+    at Module.loginUser (file:///C:/Users/Dell/Desktop/MoneyTracker/backend/src/modules/user/user.service.js:37:13)
+    at file:///C:/Users/Dell/Desktop/MoneyTracker/backend/src/modules/user/user.controller.js:19:34
+    at file:///C:/Users/Dell/Desktop/MoneyTracker/backend/src/utils/asyncHandler.js:3:21
+    at Layer.handleRequest (C:\Users\Dell\Desktop\MoneyTracker\backend\node_modules\router\lib\layer.js:152:17)
+    at next (C:\Users\Dell\Desktop\MoneyTracker\backend\node_modules\router\lib\route.js:157:13)
+    at Route.dispatch (C:\Users\Dell\Desktop\MoneyTracker\backend\node_modules\router\lib\route.js:117:3)
+    at handle (C:\Users\Dell\Desktop\MoneyTracker\backend\node_modules\router\index.js:435:11)
+    at Layer.handleRequest (C:\Users\Dell\Desktop\MoneyTracker\backend\node_modules\router\lib\layer.js:152:17)
+    at C:\Users\Dell\Desktop\MoneyTracker\backend\node_modules\router\index.js:295:15
+    at processParams (C:\Users\Dell\Desktop\MoneyTracker\backend\node_modules\router\index.js:582:12)

@@ -1,24 +1,19 @@
-import axios from "axios";
 import { createAsyncThunk } from "@reduxjs/toolkit";
+import api from "../../app/axiosInstance";
 
 export const fetchSummary = createAsyncThunk(
   "dashboard/getsummary",
   async ({ year, month }, { rejectWithValue }) => {
-    // async (_, { rejectWithValue }) => {
     try {
-      const res = await axios.get(
-        `${import.meta.env.VITE_API_URL}stats/summary`,
-        {
-          params: { year, month },
-          // params: {},
-          withCredentials: true,
-        },
-      );
-      console.log("assasawws");
+      const res = await api.get("stats/summary", {
+        params: { year, month },
+      });
+
       return res.data;
     } catch (error) {
-      console.log("assasas", error);
-      return rejectWithValue(error.response?.data?.message);
+      return rejectWithValue(
+        error.response?.data?.message || "Failed to fetch summary",
+      );
     }
   },
 );
