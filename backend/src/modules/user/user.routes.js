@@ -103,6 +103,24 @@ router.post("/login", UserController.login);
 
 /**
  * @swagger
+ * /users/refresh:
+ *   post:
+ *     summary: Refresh user
+ *     tags: [Users]
+ *     security:
+ *       - cookieAuth: []
+ *     responses:
+ *       200:
+ *         description: Authenticates user and sets JWT token in HTTP-only cookie
+ *       401:
+ *          description: Invalid refresh token
+ *       400:
+ *         description: Invalid refresh token
+ */
+router.post("/refresh", UserController.refreshToken);
+
+/**
+ * @swagger
  * /users/me:
  *   get:
  *     summary: Get current user

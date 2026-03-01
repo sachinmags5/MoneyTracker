@@ -21,7 +21,6 @@ export const addTransaction = async (data) => {
 
 export const getSummary = async (data) => {
   try {
-    console.log(data, "data");
     const { error, value } = statsValidationSchema.validate(data);
     if (error) {
       throw new Error(error.details[0].message);

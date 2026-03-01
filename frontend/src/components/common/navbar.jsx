@@ -24,6 +24,7 @@ import { useState } from 'react';
 import { useNavigate } from "react-router-dom";
 import { logoutUser } from '../../features/auth/authApi';
 import { toast } from 'react-toastify';
+import { logoutSuccess } from "../../features/auth/authSlice.js";
 
 export default function MyAppNav() {
   const { loading, error, isAuthenticated,user } = useSelector((s) => s.auth);
@@ -35,8 +36,8 @@ export default function MyAppNav() {
   };
 
   const handleLogout = async () => {
-    await dispatch(logoutUser());
-    navigate("/login");
+     await dispatch(logoutUser()).unwrap();  // wait for completion
+      navigate("/login");
     toast.dark('Logged Out Successfuly', {
           position: 'bottom-right',
         });

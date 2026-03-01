@@ -22,6 +22,10 @@ const UserSchema = new mongoose.Schema(
       type: String,
       default: "user", // Sets the default value to 'active'
     },
+    refreshToken: {
+      type: String,
+      default: null,
+    },
   },
   {
     timestamps: true,

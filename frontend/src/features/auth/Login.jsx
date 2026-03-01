@@ -48,6 +48,7 @@ export default function Login() {
       navigate("/dashboard");
       dispatch(resetAuthState());
       // navigation can be added here
+      console.log('authhhhhh')
     }
   }, [isAuthenticated, dispatch,navigate]);
 

@@ -8,10 +8,11 @@ export const getSummary = asyncHandler(async (req, res) => {
       year = new Date().getFullYear(),
       month = new Date().getMonth() + 1,
     } = req.query;
+
     const result = await service.getSummary({
       year,
       month,
-      userId: String(req.user._id),
+      userId: String(req.user.id),
     });
     res.status(200).json(result);
   } catch (error) {
