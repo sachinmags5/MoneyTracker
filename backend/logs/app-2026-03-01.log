@@ -378,3 +378,13 @@
 2026-03-01 11:15:14 [INFO]: Server started on port 5000
 2026-03-01 11:16:04 [INFO]: Server started on port 5000
 2026-03-01 11:16:26 [INFO]: Server started on port 5000
+2026-03-01 11:17:02 [INFO]: Server started on port 5000
+2026-03-01 12:05:07 [INFO]: GET /api/users/me - IP: ::1
+2026-03-01 12:05:07 [INFO]: GET /api/users/me - IP: ::1
+2026-03-01 12:05:07 [INFO]: POST /api/users/refresh - IP: ::1
+2026-03-01 12:05:07 [INFO]: POST /api/users/refresh - IP: ::1
+2026-03-01 19:28:49 [INFO]: GET /api/users/me - IP: ::1
+2026-03-01 19:28:49 [INFO]: GET /api/users/me - IP: ::1
+2026-03-01 19:28:49 [INFO]: POST /api/users/refresh - IP: ::1
+2026-03-01 19:28:49 [INFO]: POST /api/users/refresh - IP: ::1
+2026-03-01 19:51:22 [INFO]: Server started on port 5000
