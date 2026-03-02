@@ -17,7 +17,9 @@ const app = express();
 // Allow requests from your frontend (http://localhost:5173) app.use(cors({ origin: "http://localhost:5173", // frontend URL methods: ["GET", "POST", "PUT", "DELETE"], credentials: true }));
 app.use(
   cors({
-    origin: "http://localhost:5173", // frontend URL
+    // origin: "http://localhost:5173", // frontend URL
+    origin:
+      "https://money-tracker-ibnp255cv-sachins-projects-247a02ce.vercel.app/", // frontend URL
     methods: ["GET", "POST", "PUT", "DELETE"],
     credentials: true,
   }),
