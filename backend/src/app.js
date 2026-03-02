@@ -18,8 +18,10 @@ const app = express();
 app.use(
   cors({
     // origin: "http://localhost:5173", // frontend URL
-    origin:
-      "https://money-tracker-ibnp255cv-sachins-projects-247a02ce.vercel.app/", // frontend URL
+    origin: [
+      "http://localhost:5173",
+      "https://money-tracker-murex-gamma.vercel.app",
+    ],
     methods: ["GET", "POST", "PUT", "DELETE"],
     credentials: true,
   }),

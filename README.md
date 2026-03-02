@@ -78,3 +78,6 @@ Improved UI/UX: Responsive design, dark mode, and accessibility improvements.
 Deployment & CI/CD: Automated testing, containerization with Docker, and cloud deployment.
 
 This document outlines the reasoning behind the chosen stack, the initial folder structure, MVP scope, and potential v2 features to guide development.
+
+Frontend deployed on vercel.com
+Backend Deployed on render.com
