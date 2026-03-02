@@ -26,8 +26,10 @@ export const login = asyncHandler(async (req, res) => {
   // ✅ Set ONLY refresh token as httpOnly cookie
   res.cookie("refreshToken", result.refreshToken, {
     httpOnly: true,
-    secure: process.env.NODE_ENV === "production",
-    sameSite: "strict",
+    // secure: process.env.NODE_ENV === "production",
+    // sameSite: "strict",
+    secure: true, // MUST be true in production
+    sameSite: "none", // MUST be "none" for cross-domain
     maxAge: 24 * 60 * 60 * 1000, // 1 day
   });
 
@@ -67,8 +69,10 @@ export const refreshToken = asyncHandler(async (req, res) => {
   // ✅ Rotate refresh token (security best practice)
   res.cookie("refreshToken", result.newRefreshToken, {
     httpOnly: true,
-    secure: process.env.NODE_ENV === "production",
-    sameSite: "strict",
+    // secure: process.env.NODE_ENV === "production",
+    // sameSite: "strict",
+    secure: true, // MUST be true in production
+    sameSite: "none", // MUST be "none" for cross-domain
     maxAge: 24 * 60 * 60 * 1000, // 1 day
   });
 
