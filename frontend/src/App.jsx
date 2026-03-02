@@ -56,7 +56,7 @@ function App() {
             <Route path='/users' element={<User />} />
             */}
             {/* Protected Routes */}
-            
+            <Route path="*" element={<div>Route Not Found</div>} />
             <Route element={<PrivateRoute />}>
               <Route path="/dashboard" element={<Dashboard />} />
               <Route path="/profile" element={<Profile />} />
