@@ -1,0 +1,58 @@
+2026-03-06 13:16:16 [INFO]: Server started on port 5000
+2026-03-06 13:16:36 [INFO]: GET /api/users/me - IP: ::1
+2026-03-06 13:16:36 [INFO]: GET /api/users/me - IP: ::1
+2026-03-06 13:16:36 [INFO]: POST /api/users/refresh - IP: ::1
+2026-03-06 13:16:36 [INFO]: POST /api/users/refresh - IP: ::1
+2026-03-06 13:21:04 [INFO]: POST /api/users/login - IP: ::1
+2026-03-06 13:21:04 [INFO]: Login attempt: appu@gmail.com
+2026-03-06 13:21:04 [INFO]: User logged in: appu@gmail.com
+2026-03-06 13:21:05 [INFO]: GET /api/stats/summary?year=2026&month=2 - IP: ::1
+2026-03-06 13:21:05 [INFO]: GET /api/stats/summary?year=2026&month=2 - IP: ::1
+2026-03-06 13:47:50 [INFO]: POST /api/users/logout - IP: ::1
+2026-03-06 13:47:50 [INFO]: POST /api/users/refresh - IP: ::1
+2026-03-06 13:47:50 [INFO]: POST /api/users/logout - IP: ::1
+2026-03-06 13:52:42 [INFO]: GET /api/users/me - IP: ::1
+2026-03-06 13:52:42 [INFO]: GET /api/users/me - IP: ::1
+2026-03-06 13:52:42 [INFO]: POST /api/users/refresh - IP: ::1
+2026-03-06 13:52:42 [INFO]: POST /api/users/refresh - IP: ::1
+2026-03-06 14:02:09 [INFO]: GET /api/users/me - IP: ::1
+2026-03-06 14:02:09 [INFO]: GET /api/users/me - IP: ::1
+2026-03-06 14:02:09 [INFO]: POST /api/users/refresh - IP: ::1
+2026-03-06 14:02:09 [INFO]: POST /api/users/refresh - IP: ::1
+2026-03-06 14:02:15 [INFO]: POST /api/users/login - IP: ::1
+2026-03-06 14:02:15 [INFO]: Login attempt: appu@gmail.com
+2026-03-06 14:02:15 [INFO]: User logged in: appu@gmail.com
+2026-03-06 14:02:15 [INFO]: GET /api/stats/summary?year=2026&month=2 - IP: ::1
+2026-03-06 14:02:15 [INFO]: GET /api/stats/summary?year=2026&month=2 - IP: ::1
+2026-03-06 14:02:55 [INFO]: GET /api/users/me - IP: ::1
+2026-03-06 14:02:55 [INFO]: GET /api/users/me - IP: ::1
+2026-03-06 14:02:55 [INFO]: POST /api/users/refresh - IP: ::1
+2026-03-06 14:02:55 [INFO]: POST /api/users/refresh - IP: ::1
+2026-03-06 14:02:55 [INFO]: GET /api/users/me - IP: ::1
+2026-03-06 14:02:55 [INFO]: GET /api/users/me - IP: ::1
+2026-03-06 14:03:03 [INFO]: GET /api/stats/summary?year=2026&month=2 - IP: ::1
+2026-03-06 14:03:03 [INFO]: GET /api/stats/summary?year=2026&month=2 - IP: ::1
+2026-03-06 14:06:12 [INFO]: POST /api/users/logout - IP: ::1
+2026-03-06 14:06:12 [INFO]: POST /api/users/refresh - IP: ::1
+2026-03-06 14:06:12 [INFO]: POST /api/users/logout - IP: ::1
+2026-03-06 14:06:23 [INFO]: GET /api/users/me - IP: ::1
+2026-03-06 14:06:23 [INFO]: POST /api/users/refresh - IP: ::1
+2026-03-06 14:06:23 [INFO]: GET /api/users/me - IP: ::1
+2026-03-06 14:06:23 [INFO]: POST /api/users/refresh - IP: ::1
+2026-03-06 14:06:57 [INFO]: GET /api/users/me - IP: ::1
+2026-03-06 14:06:57 [INFO]: GET /api/users/me - IP: ::1
+2026-03-06 14:06:57 [INFO]: POST /api/users/refresh - IP: ::1
+2026-03-06 14:06:57 [INFO]: POST /api/users/refresh - IP: ::1
+2026-03-06 14:12:38 [INFO]: GET /api/users/me - IP: ::1
+2026-03-06 14:12:38 [INFO]: GET /api/users/me - IP: ::1
+2026-03-06 14:12:38 [INFO]: POST /api/users/refresh - IP: ::1
+2026-03-06 14:12:38 [INFO]: POST /api/users/refresh - IP: ::1
+2026-03-06 14:12:49 [INFO]: GET /api/users/me - IP: ::1
+2026-03-06 14:12:49 [INFO]: GET /api/users/me - IP: ::1
+2026-03-06 14:12:49 [INFO]: POST /api/users/refresh - IP: ::1
+2026-03-06 14:12:49 [INFO]: POST /api/users/refresh - IP: ::1
+2026-03-06 14:12:56 [INFO]: POST /api/users/login - IP: ::1
+2026-03-06 14:12:56 [INFO]: Login attempt: appu@gmail.com
+2026-03-06 14:12:56 [INFO]: User logged in: appu@gmail.com
+2026-03-06 14:12:57 [INFO]: GET /api/stats/summary?year=2026&month=2 - IP: ::1
+2026-03-06 14:12:57 [INFO]: GET /api/stats/summary?year=2026&month=2 - IP: ::1
